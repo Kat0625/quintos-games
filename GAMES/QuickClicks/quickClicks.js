@@ -5,16 +5,26 @@ const target = `
 88    88
  8b  d8 
  'Y88P' `.slice(1);
-// slice removes the first character from the String
-// in this case I remove the new line at the beginning
-// so the first line of the button will be at the proper
-// row value
+
+const imposter = `
+ .d88b. 
+.8P  Y8.
+88    88
+88    88
+ 'Y88P' `.slice(1);
 
 /* Part A: find the range of row and column values the target can be placed at */
 function makeTargets() {
-	let row = 1;
-	let col = 1;
+	let row = round(random(1, 23));
+	let col = round(random(1, 71));
+
 	button(target, row, col);
+
+	for (let i = 0; i < 4; i++) {
+		let imposterrow = round(random(1, 23));
+		let impostercol = round(random(1, 71));
+		button(imposter, imposterrow, impostercol);
+	}
 }
 
 function start() {
